@@ -58,5 +58,9 @@ The system evaluates traffic based on:
 - **Port Profiling**: Traffic targeting rare or non-standard ports.
 - **Asymmetry**: High outbound-to-inbound traffic ratios.
 
+## 📜 Credits
+Developed by **Ian Cowley** and **Antigravity (Google DeepMind)**.
+
 ## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+

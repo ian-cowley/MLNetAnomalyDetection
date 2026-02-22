@@ -1,7 +1,10 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
-  <Package Name="ML.NET Network Anomaly Detection" Manufacturer="Open Source" Version="1.1.1.0" UpgradeCode="d9e1b2f4-a8e5-4bfe-928d-123456789abc" Scope="perMachine">
+  <Package Name="ML.NET Network Anomaly Detection" Manufacturer="Open Source" Version="1.2.0.0" UpgradeCode="d9e1b2f4-a8e5-4bfe-928d-123456789abc" Scope="perMachine">
     <MajorUpgrade DowngradeErrorMessage="A newer version is already installed." />
     <MediaTemplate EmbedCab="yes" />
+
+    <!-- License setup -->
+    <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
 
     <!-- Standard generic UI -->
     <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
@@ -25,7 +28,7 @@
   <Fragment>
     <ComponentGroup Id="ServiceComponents" Directory="INSTALLFOLDER">
       <Component Id="ServiceExe" Guid="bdc8e31a-6e54-4a7b-a010-9b3fd58d925e" Bitness="always64">
-        <File Id="ServiceExeFile" Source="c:\Users\spuri\final-publish-service\MLNetAnomalyDetection.Service.exe" KeyPath="yes" />
+        <File Id="ServiceExeFile" Source="$(var.ServicePublishPath)\MLNetAnomalyDetection.Service.exe" KeyPath="yes" />
         <ServiceInstall Id="ServiceInstaller"
                         Type="ownProcess"
                         Name="MLNetAnomalyDetectionService"
@@ -40,7 +43,7 @@
 
     <ComponentGroup Id="UIComponents" Directory="INSTALLFOLDER">
       <Component Id="UIExe" Guid="72e9d29e-2f84-48ac-bf2b-c8ee5cf5d78a" Bitness="always64">
-        <File Id="UIExeFile" Source="c:\Users\spuri\final-publish-ui\MLNetAnomalyDetection.exe" KeyPath="yes" />
+        <File Id="UIExeFile" Source="$(var.UIPublishPath)\MLNetAnomalyDetection.exe" KeyPath="yes" />
       </Component>
       <Component Id="UIShortcutComp" Guid="83e9d29e-2f84-48ac-bf2b-c8ee5cf5d78a" Bitness="always64">
         <Shortcut Id="UIStartupShortcut" 

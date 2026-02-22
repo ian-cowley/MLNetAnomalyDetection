@@ -5,9 +5,9 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>dotnet-MLNetAnomalyDetection.Service-3162468a-80af-4899-af5c-c9013907c561</UserSecretsId>
-    <Version>1.2.0.0</Version>
-    <AssemblyVersion>1.2.0.0</AssemblyVersion>
-    <FileVersion>1.2.0.0</FileVersion>
+    <Version>1.2.0.1</Version>
+    <AssemblyVersion>1.2.0.1</AssemblyVersion>
+    <FileVersion>1.2.0.1</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

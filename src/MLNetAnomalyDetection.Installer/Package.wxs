@@ -1,5 +1,5 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
-  <Package Name="ML.NET Network Anomaly Detection" Manufacturer="Open Source" Version="1.2.0.2" UpgradeCode="d9e1b2f4-a8e5-4bfe-928d-123456789abc" Scope="perMachine">
+  <Package Name="ML.NET Network Anomaly Detection" Manufacturer="Open Source" Version="1.2.0.3" UpgradeCode="d9e1b2f4-a8e5-4bfe-928d-123456789abc" Scope="perMachine">
     <MajorUpgrade DowngradeErrorMessage="A newer version is already installed." />
     <MediaTemplate EmbedCab="yes" />
 

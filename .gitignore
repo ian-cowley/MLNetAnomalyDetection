@@ -1,0 +1,49 @@
+## Visual Studio / .NET
+[Bb]in/
+[Oo]bj/
+**/[Bb]in/
+**/[Oo]bj/
+**/*.user
+**/*.userosscache
+**/*.sln.docstates
+.vs/
+**/[Vv]s/
+.idea/
+.project
+.classpath
+.settings/
+
+## Build & Publish Artifacts
+**/publish/
+**/my-publish/
+**/publish-ui/
+**/_dist-*/
+**/final-publish-*/
+*.msi
+*.exe.config
+*.pdb
+*.json
+!appsettings.json
+!Package.wxs
+src/**/bin/
+src/**/obj/
+
+## Logs
+*.log
+mlnet_service_debug.log
+
+## OS Files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+## NuGet
+packages/
+*.nupkg
+
+## Brain / Documents
+brain/
+implementation_plan.md
+walkthrough.md
+task.md
+

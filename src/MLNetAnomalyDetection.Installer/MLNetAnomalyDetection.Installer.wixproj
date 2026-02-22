@@ -2,6 +2,7 @@
   <PropertyGroup>
     <OutputName>MLNetAnomalyDetection</OutputName>
     <InstallerPlatform>x64</InstallerPlatform>
+    <DefineConstants>ServicePublishPath=$(ServicePublishPath);UIPublishPath=$(UIPublishPath)</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="WixToolset.UI.wixext" Version="5.0.2" />

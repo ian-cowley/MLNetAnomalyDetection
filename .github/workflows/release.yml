@@ -35,7 +35,7 @@ jobs:
     - name: Build MSI
       run: |
         wix extension add WixToolset.UI.wixext
-        wix build src/MLNetAnomalyDetection.Installer/Package.wxs -ext WixUIExtension -o MLNetAnomalyDetection.msi -d ServicePublishPath=./publish-service -d UIPublishPath=./publish-ui
+        wix build src/MLNetAnomalyDetection.Installer/Package.wxs -ext WixToolset.UI.wixext -o MLNetAnomalyDetection.msi -d ServicePublishPath=./publish-service -d UIPublishPath=./publish-ui
 
     - name: Create Release
       uses: softprops/action-gh-release@v2

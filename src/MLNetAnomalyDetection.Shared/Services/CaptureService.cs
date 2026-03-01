@@ -14,8 +14,9 @@ namespace MLNetAnomalyDetection.Services
         private ICaptureDevice? _fileDevice;
         private int _packetCount;
         
-        // Cache raw packets to support saving them later
-        private readonly List<RawCapture> _rawPackets = new List<RawCapture>();
+        // Cache raw packets to support saving them later (bounded to trailing 10,000 packets)
+        private const int MaxCachedPackets = 10000;
+        private readonly Queue<RawCapture> _rawPackets = new Queue<RawCapture>();
 
         public event EventHandler<PacketModel>? OnPacketCaptured;
         public Action? OnFileCaptureComplete;
@@ -141,17 +142,20 @@ namespace MLNetAnomalyDetection.Services
 
         public void SaveToPcap(string filePath)
         {
-            if (_rawPackets.Count == 0) return;
-
             try
             {
-                // Create a writer device based on the first packet's link type
-                using var writer = new CaptureFileWriterDevice(filePath);
-                writer.Open();
-
-                foreach (var rawPacket in _rawPackets)
+                lock (_rawPackets)
                 {
-                    writer.Write(rawPacket);
+                    if (_rawPackets.Count == 0) return;
+
+                    // Create a writer device based on the first packet's link type
+                    using var writer = new CaptureFileWriterDevice(filePath);
+                    writer.Open();
+
+                    foreach (var rawPacket in _rawPackets)
+                    {
+                        writer.Write(rawPacket);
+                    }
                 }
             }
             catch (Exception ex)
@@ -168,7 +172,11 @@ namespace MLNetAnomalyDetection.Services
             // Critical for saving
             lock (_rawPackets)
             {
-                _rawPackets.Add(rawPacket);
+                if (_rawPackets.Count >= MaxCachedPackets)
+                {
+                    _rawPackets.Dequeue();
+                }
+                _rawPackets.Enqueue(rawPacket);
             }
 
             var packet = Packet.ParsePacket(rawPacket.LinkLayerType, rawPacket.Data);
